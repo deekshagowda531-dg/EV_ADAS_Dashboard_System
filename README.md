@@ -1,10 +1,44 @@
-Real-time Electric Vehicle Advanced Driver Assistance System Dashboard
-*Project Overview*
-The EV ADAS Dashboard is a real-time monitoring and alert system designed for Electric Vehicles.
-The goal of this project is to simulate core ADAS features by acquiring vehicle data using sensors, processing it on an STM32 microcontroller, and visualizing it on a PC-based dashboard.
-The system provides the driver with live feedback on critical parameters and triggers immediate alerts for potential hazards, improving safety and awareness.
-*Key Features*
-Real-time Vehicle Monitoring: Live tracking of Speed, Battery Voltage, and Motor Temperature
-ADAS Safety Alerts: Collision warning system using proximity detection
-Interactive GUI Dashboard: Clean, graphical interface for data visualization with gauges and graphs
-Serial Communication: Reliable UART data transfer between microcontroller and PCHardware Alerts: On-board buzzer and LED indicators for critical warningsHardware ComponentsSTM32F103C8T6 "Blue Pill" MicrocontrollerHC-SR04 Ultrasonic Sensor for Obstacle DetectionLM35 / DHT11 Temperature SensorVoltage Divider Circuit for Battery MonitoringBuzzer and LED for Alert SystemUSB-to-TTL Converter for UART CommunicationSoftware & ToolsEmbedded Side: Embedded C, STM32CubeIDEPC Side: Python for GUI and Data VisualizationLibraries: Serial Communication, Data PlottingDebugging Tools: ST-Link Programmer, Oscilloscope, MultimeterSystem ArchitectureSensors collect data → STM32 processes data and checks thresholds → Data sent to PC via UART → Python Dashboard displays data and logs alerts → Hardware alerts triggered on dangerWorking PrincipleAll sensors are interfaced with the STM32 microcontroller.The microcontroller reads sensor values at regular intervals.Processed data is sent to the PC through UART serial communication.The Python dashboard receives the data, parses it, and updates the UI in real-time.If any parameter crosses the safety threshold, the STM32 triggers a local buzzer/LED and flags an alert on the dashboard.ResultsSuccessfully achieved real-time data acquisition with <500ms latencyAccurate collision detection within 20cm rangeStable UART communication at 9600 baudUser-friendly dashboard for monitoring all parameters at a glanceApplicationsElectric Vehicle PrototypingDriver Safety and Assistance SystemsFleet Monitoring and TelematicsEducational platform for Embedded + Python integrationFuture EnhancementsIntegration of GPS and GSM for accident location tracking and SMS alertsCAN Bus protocol for communication with real EV systemsMigration from PC dashboard to a dedicated 7-inch TFT displayAdding more ADAS features: Lane Departure Warning, Speed Limit Alert
+**Project Overview**
+
+* Purpose: A real-time monitoring and alert system simulating core ADAS features for Electric Vehicles to improve driver safety and situational awareness.
+* Core Workflow: Acquires vehicle telematics via sensors, processes thresholds on a microcontroller, and visualizes live data on a PC dashboard.
+
+**Key Features**
+
+* Real-time Monitoring: Tracks live vehicle speed, battery voltage, and motor temperature.
+* ADAS Collision Warning: Uses proximity detection to alert drivers of imminent hazards.
+* Interactive GUI Dashboard: Features clean graphical visualizers including gauges, charts, and alert logs.
+* Dual Alert Mechanisms: Triggers immediate local hardware warnings alongside software dashboard flags.
+
+**Hardware & Software Components**
+
+* Microcontroller: STM32F103C8T6 ("Blue Pill") core processing unit programmed via ST-Link.
+* Sensors & Modules: HC-SR04 ultrasonic sensor for obstacle detection, LM35/DHT11 for thermal tracking, and a custom voltage divider circuit for battery monitoring.
+* Indicators & Interfaces: Local buzzer, indicator LEDs, and a USB-to-TTL converter for serial data transmission.
+* Software Stack: Embedded C (STM32CubeIDE) for firmware; Python with serial and data visualization libraries for the PC GUI.
+
+**System Architecture & Working Principle**
+
+* Step 1 (Acquisition): Sensors continuously capture distance, temperature, and voltage metrics.
+* Step 2 (Processing): STM32 evaluates raw data against predefined safety thresholds.
+* Step 3 (Communication): Processed telemetry streams reliably to the PC via UART at 9600 baud.
+* Step 4 (Visualization): The Python GUI parses incoming streams to update gauges and charts in real time.
+* Step 5 (Alerting): Any threshold breach instantly activates local hardware indicators (buzzer/LED) and logs warning flags on the GUI.
+
+**Key Results & Metrics**
+
+* Latency: Achieved smooth real-time data acquisition with less than 500 ms response time.
+* Proximity Precision: Reliable collision detection within a 20 cm range.
+* System Stability: Continuous, error-free UART serial transfer.
+
+**Applications**
+
+* Prototyping platform for Electric Vehicles.
+* Educational research tool combining Embedded C and Python data visualization.
+* Driver assistance, fleet tracking, and telemetry base development.
+
+**Future Enhancements**
+
+* Hardware Upgrade: Replace PC GUI with a dedicated 7-inch TFT display and implement CAN Bus for real EV integration.
+* Telematics Expansion: Integrate GPS and GSM modules for automated accident location tracking and emergency SMS notifications.
+* Expanded ADAS Suite: Incorporate advanced algorithms for Lane Departure Warning and Speed Limit Alert systems.
