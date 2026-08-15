@@ -1,3 +1,6 @@
+### Project: Real-Time Electric Vehicle Dashboard & ADAS Warning System
+**Platform**: Embedded Systems Internship @ Emertxe
+
 **Project Overview**
 
 * Purpose: A real-time monitoring and alert system simulating core ADAS features for Electric Vehicles to improve driver safety and situational awareness.
